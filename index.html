@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Qur'an Reading Made Easy — Ustadh Farid Sulayman Abu Asmaa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/farid-icon-32.png" />
+<link rel="icon" type="image/png" sizes="512x512" href="assets/farid-icon-512.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/farid-icon-180.png" />
+<style>
+  :root{
+    --green-900:#0c2e25;
+    --green-800:#103b2f;
+    --green-700:#16513f;
+    --green-600:#1d6b53;
+    --cream:#f6f1e4;
+    --cream-2:#efe7d3;
+    --paper:#fbf8f0;
+    --gold:#c9a24b;
+    --gold-soft:#d8bd7e;
+    --gold-deep:#a8842f;
+    --ink:#22271f;
+    --ink-soft:#5a5f52;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Mulish',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+  }
+  .arabic{font-family:'Amiri',serif;direction:rtl;}
+  .serif{font-family:'Cormorant Garamond',serif;}
+
+  /* ---------- LOGO ---------- */
+  .brand{
+    display:flex;flex-direction:column;align-items:center;gap:11px;
+    margin-top:26px;
+  }
+  .logo-badge{
+    position:relative;width:74px;height:74px;border-radius:20px;
+    background:radial-gradient(120% 120% at 30% 20%, #1d6b53 0%, #13513e 50%, #0c2e25 100%);
+    display:grid;place-items:center;
+    box-shadow:0 8px 22px rgba(0,0,0,.32), inset 0 0 0 1px rgba(216,189,126,.25);
+  }
+  .logo-badge .lring{position:absolute;inset:7px;border-radius:14px;border:1.5px solid rgba(216,189,126,.8);}
+  .logo-badge .lword{
+    position:relative;font-family:'Aref Ruqaa',serif;font-weight:700;
+    font-size:40px;line-height:1;direction:rtl;color:transparent;
+    background:linear-gradient(175deg,#f0d99a,#d8bd7e 45%,#c9a24b);
+    -webkit-background-clip:text;background-clip:text;
+    padding-bottom:7px;
+  }
+  .brand .wordmark{
+    font-family:'Mulish';font-weight:600;
+    color:var(--gold-soft);font-size:12px;letter-spacing:.26em;
+    text-transform:uppercase;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(120% 90% at 50% -10%, var(--green-700) 0%, var(--green-800) 45%, var(--green-900) 100%);
+    color:var(--cream);
+    overflow:hidden;
+    padding:54px 24px 80px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23c9a24b' stroke-width='1' stroke-opacity='0.5'%3E%3Cpath d='M40 8 L52 28 L72 40 L52 52 L40 72 L28 52 L8 40 L28 28 Z'/%3E%3Ccircle cx='40' cy='40' r='6'/%3E%3C/g%3E%3C/svg%3E");
+    opacity:0.06;
+    pointer-events:none;
+  }
+  .frame{
+    position:relative;
+    max-width:1080px;
+    margin:0 auto;
+    border:1px solid rgba(201,162,75,.45);
+    border-radius:4px;
+    padding:48px 40px 56px;
+  }
+  .frame::after{
+    content:"";
+    position:absolute;inset:7px;
+    border:1px solid rgba(201,162,75,.22);
+    border-radius:2px;
+    pointer-events:none;
+  }
+  .bismillah{
+    text-align:center;
+    color:var(--gold-soft);
+    font-size:clamp(26px,4.2vw,40px);
+    line-height:1.4;
+    margin-bottom:6px;
+  }
+  .eyebrow{
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:.42em;
+    font-size:11px;
+    font-weight:600;
+    color:var(--gold);
+    margin:22px 0 0;
+  }
+  .ornament{
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    margin:14px auto 0;color:var(--gold);max-width:240px;
+  }
+  .ornament .line{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold));}
+  .ornament .line.r{background:linear-gradient(90deg,var(--gold),transparent);}
+  .ornament .dot{width:6px;height:6px;transform:rotate(45deg);border:1px solid var(--gold);}
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:52px;
+    align-items:center;
+    margin-top:34px;
+  }
+  @media(max-width:760px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;text-align:center;justify-items:center;}
+  }
+
+  /* book */
+  .book-wrap{display:flex;justify-content:center;perspective:1400px;}
+  .book{
+    position:relative;
+    width:248px;height:344px;
+    transform:rotateY(-11deg);
+    transform-style:preserve-3d;
+    backface-visibility:hidden;
+    transition:transform .6s cubic-bezier(.2,.7,.2,1);
+  }
+  .book:hover{transform:rotateY(-3deg);}
+  .book .cover{
+    position:absolute;inset:0;
+    border-radius:14px;
+    background:linear-gradient(155deg,#fdfaf2 0%, #f6efdd 100%);
+    border:1px solid rgba(168,132,47,.4);
+    padding:26px 22px;
+    display:flex;flex-direction:column;align-items:center;
+    box-shadow:inset 0 0 0 1px rgba(201,162,75,.45), -20px 24px 38px rgba(0,0,0,.42);
+  }
+  .book .spine{display:none;}
+  .book .cover .c-frame{
+    position:absolute;inset:13px;border:1px solid rgba(168,132,47,.45);border-radius:8px;
+  }
+  .book .c-top{
+    color:var(--gold-deep);font-size:22px;margin-top:6px;
+  }
+  .book .c-title{
+    font-family:'Cormorant Garamond',serif;
+    color:var(--green-800);
+    font-size:30px;line-height:1.05;font-weight:600;
+    text-align:center;margin-top:auto;letter-spacing:.5px;
+  }
+  .book .c-rule{width:46px;height:1px;background:var(--gold);margin:14px 0;}
+  .book .c-sub{
+    color:var(--gold-deep);font-size:10px;letter-spacing:.32em;
+    text-transform:uppercase;text-align:center;margin-bottom:6px;
+  }
+  .book .c-author{
+    color:var(--green-700);font-size:11px;letter-spacing:.06em;
+    text-align:center;margin-bottom:4px;font-style:italic;
+    font-family:'Cormorant Garamond',serif;
+  }
+
+  .hero-copy h1{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    font-size:clamp(40px,6vw,64px);
+    line-height:1.02;
+    letter-spacing:.5px;
+    color:#fbf6e9;
+  }
+  .hero-copy .lead{
+    margin-top:20px;
+    font-size:clamp(16px,1.7vw,19px);
+    color:rgba(246,241,228,.82);
+    max-width:46ch;
+    font-weight:300;
+  }
+  @media(max-width:760px){.hero-copy .lead{margin-left:auto;margin-right:auto;}}
+  .author-line{
+    margin-top:22px;display:flex;align-items:center;gap:12px;
+    color:var(--gold-soft);font-family:'Cormorant Garamond',serif;
+    font-size:20px;font-style:italic;
+  }
+  @media(max-width:760px){.author-line{justify-content:center;}}
+  .author-line .tag{
+    font-family:'Mulish';font-style:normal;font-size:10px;font-weight:600;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+    border:1px solid rgba(201,162,75,.4);border-radius:40px;padding:4px 11px;
+  }
+
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px;justify-content:flex-start;}
+  @media(max-width:760px){.cta-row{justify-content:center;}}
+  .btn{
+    display:inline-flex;align-items:center;gap:11px;
+    font-weight:600;font-size:15px;letter-spacing:.02em;
+    padding:15px 26px;border-radius:3px;cursor:pointer;text-decoration:none;
+    transition:transform .15s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(180deg,var(--gold-soft),var(--gold));
+    color:#23200f;border:1px solid var(--gold-deep);
+    box-shadow:0 10px 26px rgba(201,162,75,.28);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(201,162,75,.4);}
+  .btn-ghost{
+    background:transparent;color:var(--cream);
+    border:1px solid rgba(246,241,228,.35);
+  }
+  .btn-ghost:hover{border-color:var(--gold-soft);color:var(--gold-soft);}
+  .btn svg{width:18px;height:18px;}
+  .meta{
+    margin-top:24px;display:flex;flex-wrap:wrap;gap:10px 26px;
+    color:rgba(246,241,228,.6);font-size:13px;letter-spacing:.04em;
+  }
+  @media(max-width:760px){.meta{justify-content:center;}}
+  .meta span{display:inline-flex;align-items:center;gap:8px;}
+  .meta .d{width:5px;height:5px;background:var(--gold);transform:rotate(45deg);}
+
+  /* ---------- LESSONS ---------- */
+  .section{max-width:1000px;margin:0 auto;padding:78px 24px;}
+  .sec-head{text-align:center;margin-bottom:46px;}
+  .sec-head .eyebrow{color:var(--gold-deep);}
+  .sec-head h2{
+    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:clamp(30px,4vw,44px);color:var(--green-800);margin-top:8px;
+    letter-spacing:.4px;
+  }
+  .sec-head p{color:var(--ink-soft);max-width:54ch;margin:12px auto 0;font-weight:300;}
+  .sec-head .ornament{color:var(--gold-deep);margin-top:18px;}
+  .sec-head .ornament .line{background:linear-gradient(90deg,transparent,var(--gold-deep));}
+  .sec-head .ornament .line.r{background:linear-gradient(90deg,var(--gold-deep),transparent);}
+  .sec-head .ornament .dot{border-color:var(--gold-deep);}
+
+  .lessons{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  @media(max-width:680px){.lessons{grid-template-columns:1fr;}}
+  .lesson{
+    display:flex;align-items:center;gap:18px;
+    background:var(--paper);
+    border:1px solid var(--cream-2);
+    border-radius:4px;padding:18px 20px;
+    transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .lesson:hover{border-color:var(--gold-soft);transform:translateY(-2px);box-shadow:0 10px 24px rgba(16,59,47,.07);}
+  .lesson .num{
+    flex:none;width:42px;height:42px;border-radius:50%;
+    display:grid;place-items:center;
+    border:1px solid var(--gold);color:var(--gold-deep);
+    font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;
+  }
+  .lesson .t .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);font-weight:600;}
+  .lesson .t .n{font-size:16px;color:var(--ink);font-weight:600;margin-top:1px;}
+  .lesson .t .ar{font-family:'Amiri',serif;direction:rtl;color:var(--ink-soft);font-size:15px;margin-top:1px;}
+
+  /* ---------- DOWNLOAD BAND ---------- */
+  .band{
+    background:radial-gradient(120% 120% at 50% 0%,var(--green-700),var(--green-900));
+    color:var(--cream);text-align:center;padding:8px 24px;
+    position:relative;
+  }
+  .band .inner{
+    max-width:760px;margin:0 auto;padding:64px 0 70px;
+    border-top:1px solid rgba(201,162,75,.2);
+    border-bottom:1px solid rgba(201,162,75,.2);
+  }
+  .band .verse{
+    font-family:'Amiri',serif;direction:rtl;font-size:clamp(24px,3.6vw,34px);
+    color:var(--gold-soft);line-height:1.7;
+  }
+  .band h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(28px,4vw,40px);margin-top:18px;color:#fbf6e9;}
+  .band p{color:rgba(246,241,228,.72);margin:12px auto 0;max-width:46ch;font-weight:300;}
+  .band .cta-row{justify-content:center;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--green-900);color:rgba(246,241,228,.6);text-align:center;padding:34px 24px;font-size:13px;}
+  footer .h{
+    font-family:'Amiri',serif;direction:rtl;color:var(--gold-soft);font-size:18px;margin-bottom:6px;
+  }
+  footer .en{font-style:italic;font-family:'Cormorant Garamond',serif;font-size:16px;color:rgba(246,241,228,.78);max-width:50ch;margin:0 auto 14px;}
+  footer .src{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);}
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="frame">
+      <p class="bismillah arabic">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+      <p class="eyebrow">A Free Gift · Learn to Read the Qur'an</p>
+      <div class="ornament"><span class="line"></span><span class="dot"></span><span class="line r"></span></div>
+
+      <div class="hero-grid">
+        <div class="book-wrap">
+          <div class="book">
+            <div class="cover">
+              <div class="c-frame"></div>
+              <div class="c-top arabic">القرآن</div>
+              <div class="c-title">Qur'an<br />Reading<br />Made Easy</div>
+              <div class="c-rule"></div>
+              <div class="c-sub">A Beginner's Guide</div>
+              <div class="c-author">Ustadh Farid Sulayman Abu Asmaa</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-copy">
+          <h1>Qur'an Reading<br />Made Easy</h1>
+          <p class="lead">A gentle, step-by-step path from the very first Arabic letter to reading the words of Allah — designed for complete beginners of any age.</p>
+          <div class="author-line"><span class="tag">By</span> Ustadh Farid Sulayman Abu Asmaa</div>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="assets/Quran-Reading-Made-Easy.pdf" download="Quran-Reading-Made-Easy.pdf">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+              Download the PDF
+            </a>
+          </div>
+
+          <div class="meta">
+            <span><span class="d"></span>119 pages</span>
+            <span><span class="d"></span>11 lessons</span>
+            <span><span class="d"></span>PDF · Free forever</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- LESSONS -->
+  <section class="section" id="lessons">
+    <div class="sec-head">
+      <p class="eyebrow">What's Inside</p>
+      <h2>Eleven Lessons, One Clear Path</h2>
+      <p>Each lesson builds gently on the last — from recognising single letters to reading full words with correct vowels, prolongation, and the rules that beautify your recitation.</p>
+      <div class="ornament"><span class="line"></span><span class="dot"></span><span class="line r"></span></div>
+    </div>
+
+    <div class="lessons">
+      <div class="lesson"><div class="num">1</div><div class="t"><div class="k">Lesson One</div><div class="n">The Arabic Alphabet</div><div class="ar">الحُرُوف</div></div></div>
+      <div class="lesson"><div class="num">2</div><div class="t"><div class="k">Lesson Two</div><div class="n">The Three Vowels — Fat'hah, Kasrah, Dhummah</div><div class="ar">الحَرَكَات</div></div></div>
+      <div class="lesson"><div class="num">3</div><div class="t"><div class="k">Lesson Three</div><div class="n">Connecting the Letters</div></div></div>
+      <div class="lesson"><div class="num">4</div><div class="t"><div class="k">Lesson Four</div><div class="n">As-Sakoon</div><div class="ar">السُّكُون</div></div></div>
+      <div class="lesson"><div class="num">5</div><div class="t"><div class="k">Lesson Five</div><div class="n">The Prolonging Letters (Hurúf al-Mād)</div><div class="ar">حُرُوف المَدّ</div></div></div>
+      <div class="lesson"><div class="num">6</div><div class="t"><div class="k">Lesson Six</div><div class="n">At-Tanween</div><div class="ar">التَّنْوِين</div></div></div>
+      <div class="lesson"><div class="num">7</div><div class="t"><div class="k">Lesson Seven</div><div class="n">Ash-Shaddah</div><div class="ar">الشَّدَّة</div></div></div>
+      <div class="lesson"><div class="num">8</div><div class="t"><div class="k">Lesson Eight</div><div class="n">Hamzatul-Wasl</div><div class="ar">هَمْزَة الوَصْل</div></div></div>
+      <div class="lesson"><div class="num">9</div><div class="t"><div class="k">Lesson Nine</div><div class="n">Alif-Laam — Lunar &amp; Solar Letters</div><div class="ar">اللاَّم الشَّمْسِيَّة والقَمَرِيَّة</div></div></div>
+      <div class="lesson"><div class="num">10</div><div class="t"><div class="k">Lesson Ten</div><div class="n">Meem &amp; Noon Mushaddadah</div></div></div>
+      <div class="lesson"><div class="num">11</div><div class="t"><div class="k">Lesson Eleven</div><div class="n">The Laam in the Name of Allah</div><div class="ar">لَفْظ الجَلَالَة</div></div></div>
+      <div class="lesson" style="border-style:dashed;background:transparent;"><div class="num" style="border-style:dashed;">∎</div><div class="t"><div class="k">Throughout</div><div class="n">Hundreds of practice exercises &amp; reviews</div></div></div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD BAND -->
+  <section class="band">
+    <div class="inner">
+      <p class="verse arabic">وَلَقَدْ يَسَّرْنَا الْقُرْآنَ لِلذِّكْرِ فَهَلْ مِن مُّدَّكِرٍ</p>
+      <h2>Begin Today</h2>
+      <p>“And We have certainly made the Qur'an easy to remember, so is there any who will be reminded?” — Surah Al-Qamar, 54:17</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="assets/Quran-Reading-Made-Easy.pdf" download="Quran-Reading-Made-Easy.pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Download the PDF
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="h arabic">خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ</p>
+    <p class="en">“The best of you are those who learn the Qur'an and teach it.”</p>
+    <p class="src">Sahih al-Bukhari · Shared freely — please pass it on</p>
+    <div class="brand">
+      <div class="logo-badge"><div class="lring"></div><div class="lword">فريد</div></div>
+      <div class="wordmark">Farid Sulayman</div>
+    </div>
+  </footer>
+
+  <script>
+    const PDF_URL = "assets/Quran-Reading-Made-Easy.pdf";
+    const FILE_NAME = "Quran-Reading-Made-Easy.pdf";
+    document.querySelectorAll("a[download]").forEach(function(link){
+      link.addEventListener("click", async function(e){
+        e.preventDefault();
+        try{
+          const res = await fetch(PDF_URL);
+          if(!res.ok) throw new Error("fetch failed");
+          const blob = await res.blob();
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url; a.download = FILE_NAME;
+          document.body.appendChild(a); a.click(); a.remove();
+          setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+        }catch(err){
+          // Fallback: open the PDF directly so the user can save it
+          window.open(PDF_URL, "_blank", "noopener");
+        }
+      });
+    });
+
+  </script>
+
+</body>
+</html>
